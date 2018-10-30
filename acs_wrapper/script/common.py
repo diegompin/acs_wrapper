@@ -4,10 +4,8 @@ github: https://github.com/diegompin
 
 """
 
-from src.util.util_multiprocessing import *
-
-import pandas as pd
-from src.util.parameters import Parameter
+from acs_wrapper.src.parameters import Parameter
+from acs_wrapper.src.util_multiprocessing import MyPool
 
 
 class ScriptBase(object):

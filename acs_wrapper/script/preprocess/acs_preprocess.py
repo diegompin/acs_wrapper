@@ -4,7 +4,7 @@ github: https://github.com/diegompin
 
 """
 
-from src.acs.read.acs_read import AcsReadRace, AcsReadEducation, AcsReadIncome
+from acs_wrapper.src.read.acs_read import AcsReadRace, AcsReadEducation, AcsReadIncome
 
 
 class AcsPreprocess(object):
@@ -14,7 +14,11 @@ class AcsPreprocess(object):
 
     @staticmethod
     def get_param():
-        readers = [AcsReadRace, AcsReadEducation, AcsReadIncome]
+        readers = [
+            AcsReadRace,
+            AcsReadEducation,
+            AcsReadIncome
+        ]
         # readers = [AcsReadRace]
         level = ['county', 'zcta']
         year = [16]

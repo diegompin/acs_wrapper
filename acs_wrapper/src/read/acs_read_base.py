@@ -88,6 +88,6 @@ class AcsRead(object):
         return df
 
     def _get_filename(self):
-        # return 'datalink/acs/data_input/ACS_%d_%dYR_%s_with_ann.csv' % (self.year, self.estimates, self.datafile)
+        # return 'datalink/acs_wrapper/data_input/ACS_%d_%dYR_%s_with_ann.csv' % (self.year, self.estimates, self.datafile)
         return '%s/ACS_%d_%dYR_%s_with_ann.csv' % (self.datapath, self.year, self.estimates, self.datafile)
 

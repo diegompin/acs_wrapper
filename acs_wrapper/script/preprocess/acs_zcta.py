@@ -6,11 +6,11 @@ github: https://github.com/diegompin
 
 import pandas as pd
 import itertools as it
-from scripts.acs.preprocess.acs_preprocess import AcsPreprocess
+from acs_wrapper.script.preprocess.acs_preprocess import AcsPreprocess
 
 
 def main():
-    data_path_acs = 'datalink/acs/data_output'
+    data_path_acs = 'datalink/acs_wrapper/data_output'
     data_path_spatial = 'datalink/spatial/data_output'
     filepath_zcta = '%s/zcta_county_state.hdf' % data_path_spatial
     readers, year, estimates = AcsPreprocess.get_param()

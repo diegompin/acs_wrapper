@@ -4,7 +4,7 @@ github: https://github.com/diegompin
 
 """
 
-from src.acs.read.acs_read_base import AcsRead
+from acs_wrapper.src.read.acs_read_base import AcsRead
 
 
 class AcsReadRace(AcsRead):

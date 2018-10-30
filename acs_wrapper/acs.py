@@ -11,7 +11,7 @@ class Acs(object):
 
     __DATAPATH__ = '%s/df_AcsRead%s_%s_%d_%d.csv'
 
-    def __init__(self, data_path='datalink/acs/data_output'):
+    def __init__(self, data_path='data/data_output'):
         self.datapath = data_path
 
     def _get_df_(self, datapath, normed=False):
