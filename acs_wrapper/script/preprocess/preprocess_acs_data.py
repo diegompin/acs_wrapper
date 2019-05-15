@@ -9,22 +9,28 @@ from acs_wrapper.src.util_multiprocessing import MyPool
 
 
 def write_hdf(args):
-    filename, f_data = args
-    df = f_data.get_data()
-    datapath = 'datalink/acs_wrapper/data_output/'
-    df.to_csv('%s/df_%s.csv' % (datapath, filename), index=True)
+
+    reader, level, year, estimate = args
+    datapath_input = 'datalink/data_input'
+    reader = reader(datapath_input)
+    df = reader.get_data(level, year, estimate)
+    datapath_outout = 'datalink/data_output/'
+    df.to_csv(f'{datapath_outout}/df_{reader.prefix}_{level}_{year}_{estimate}.csv', index=True)
 
 
 def main():
     print('INITIALIZING EXPORTING ACS DATA')
-    readers, level, year, estimates = AcsPreprocess.get_param()
-    datapath = 'datalink/acs_wrapper/data_input/%s'
+    list_reader, list_level, list_year, list_estimate = AcsPreprocess.get_param()
+
     data = dict()
-    for (r, l, y, e) in it.product(readers, level, year, estimates):
-        data['%s_%s_%d_%d' % (r.__name__, l, y, e)] = r(datapath=datapath % l, year=y, estimates=e)
-    args = tuple(zip(data.keys(), data.values()))
+    # for arg in it.product(list_reader, list_level, list_year, list_estimate):
+        # name = reader.__name__.split('AcsRead')[1].lower()
+        # data[f'{name}_{level}_{year}_{estimate}'] = reader(datapath=datapath % level, year=year,
+        #                                                               estimates=estimate)
+    # list_args = tuple(zip(data.keys(), data.values()))
+    list_args = it.product(list_reader, list_level, list_year, list_estimate)
     with MyPool(processes=4) as pool:
-        pool.map(write_hdf, args)
+        pool.map(write_hdf, list_args)
     print('FINISHED EXPORTING ACS DATA')
 
 

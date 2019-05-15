@@ -47,3 +47,19 @@ class Acs(object):
         df = pd.merge(df_race, df_education, left_index=True, right_index=True)
         df = pd.merge(df, df_income, left_index=True, right_index=True)
         return df
+
+    # def get_implementations(self):
+    #     dict_area_function = {
+    #         'race': None,
+    #         'education': None,
+    #         'income': None
+    #     }
+    #     return dict_area_function
+    #
+    #
+    # def get_data(self, data_name):
+    #         dict_data_function = self.get_implementations()
+    #         assert data_name in dict_data_function, 'area not implemented'
+    #         data = dict_data_function[data_name]
+    #         method_to_call = getattr(data(), 'get_data')
+    #         return method_to_call()

@@ -12,12 +12,14 @@ class AcsRead(object):
     __COLUMN_GEO__ = 'GEO.id2'
     __ENCODING__ = "ISO-8859-1"
 
-    def __init__(self, datapath, prefix, datafile, year=2016, estimates=5, column_format='HC01_EST_VC%02d', is_percent=False):
+    # def __init__(self, datapath, prefix, datafile, year=2016, estimates=5, column_format='HC01_EST_VC%02d', is_percent=False):
+    def __init__(self, datapath, prefix, datafile, column_format='HC01_EST_VC%02d',
+                     is_percent=False):
         self.datapath = datapath
         self.prefix = prefix
         self.datafile = datafile
-        self.year = year
-        self.estimates = estimates
+        # self.year = year
+        # self.estimates = estimates
         self.column_format = column_format
         self.is_percent = is_percent
 
@@ -28,14 +30,15 @@ class AcsRead(object):
         """
         pass
 
-    def get_data(self):
-        df = self.read_file()
+    def get_data(self, level, year, estimates):
+        df = self.read_file(level, year, estimates)
         df = self._extract_group_mappings(df)
         df = self._filter_columns(df)
         return df
 
-    def read_file(self):
-        df = pd.read_csv(self._get_filename(), encoding=self.__ENCODING__)
+    # def read_file(self):
+    def read_file(self, level, year, estimates):
+        df = pd.read_csv(self._get_filename(level, year, estimates), encoding=self.__ENCODING__)
         # Eliminates the first line which is a description of the colunm
         df = df.loc[1:, :]
         # Extract only the zip code such as '00601' from 'ZCTA5 00601'
@@ -87,7 +90,7 @@ class AcsRead(object):
         df.columns = ['%s_%s' % (prefix, c) for c in df.columns]
         return df
 
-    def _get_filename(self):
+    def _get_filename(self, level, year, estimates):
         # return 'datalink/acs_wrapper/data_input/ACS_%d_%dYR_%s_with_ann.csv' % (self.year, self.estimates, self.datafile)
-        return '%s/ACS_%d_%dYR_%s_with_ann.csv' % (self.datapath, self.year, self.estimates, self.datafile)
+        return f'{self.datapath}/{level}/ACS_{year}_{estimates}YR_{self.datafile}_with_ann.csv'
 

@@ -4,7 +4,7 @@ github: https://github.com/diegompin
 
 """
 
-from acs import Acs
+from acs_wrapper import Acs
 import pandas as pd
 
 def main(datalink_acs='datalink/acs_wrapper', level='zcta'):

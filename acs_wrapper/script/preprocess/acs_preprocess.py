@@ -4,7 +4,7 @@ github: https://github.com/diegompin
 
 """
 
-from acs_wrapper.src.read.acs_read import AcsReadRace, AcsReadEducation, AcsReadIncome
+from acs_wrapper.src.read import *
 
 
 class AcsPreprocess(object):
@@ -14,13 +14,18 @@ class AcsPreprocess(object):
 
     @staticmethod
     def get_param():
-        readers = [
-            AcsReadRace,
-            AcsReadEducation,
-            AcsReadIncome
-        ]
+        readers = ALL_IMPLEMENTATIONS
+        # readers = [
+        #     AcsReadRace,
+        #     AcsReadEducation,
+        #     AcsReadIncome,
+        #     AcsReadAge65,
+        #
+        # ]
         # readers = [AcsReadRace]
-        level = ['county', 'zcta']
-        year = [16]
+        # level = ['county', 'zcta']
+        level = ['zcta']
+
+        year = [17]
         estimates = [5]
         return readers, level, year, estimates
