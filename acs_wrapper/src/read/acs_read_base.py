@@ -44,6 +44,7 @@ class AcsRead(object):
         # Extract only the zip code such as '00601' from 'ZCTA5 00601'
         # df.loc[:, 'SPATIAL'] = df.loc[:, self.__COLUMN_GEO__].apply(lambda cell: cell if cell.split(' ')[0] != 'ZCTA5' else cell.split(' ')[1] )
         df.loc[:, 'SPATIAL'] = df.loc[:, self.__COLUMN_GEO__]
+        df['SPATIAL'] = df['SPATIAL'].astype('str')
         # Set the index
         df = df.set_index('SPATIAL')
         return df
