@@ -4,7 +4,7 @@ github: https://github.com/diegompin
 
 """
 
-from acs_wrapper.script.common import ScriptBase
+from old.common import ScriptBase
 from acs_wrapper.acs import Acs
 import pandas as pd
 import itertools as it

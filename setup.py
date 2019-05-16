@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="acs_wrapper",
-    version="1.0.0",
+    version="1.0.6",
     author="Diego Pinheiro",
     author_email="diegompin@gmail.com",
     description="A wrapper for the American Community Survey Data",
