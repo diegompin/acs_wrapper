@@ -25,7 +25,6 @@ class AcsReadIncome(AcsRead):
         HC01_EST_VC05
         Households; Estimate; $25,000 to $34,999
 
-
         HC01_EST_VC06
         Households; Estimate; $35,000 to $49,999
 
@@ -34,7 +33,6 @@ class AcsReadIncome(AcsRead):
 
         HC01_EST_VC08
         Households; Estimate; $75,000 to $99,999
-
 
         HC01_EST_VC09
         Households; Estimate; $100,000 to $149,999
