@@ -6,7 +6,7 @@ github: https://github.com/diegompin
 
 import pandas as pd
 import itertools as it
-from acs_wrapper.script.preprocess.acs_preprocess import AcsPreprocess
+from old.script import AcsPreprocess
 
 
 def main():
