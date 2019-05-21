@@ -5,11 +5,11 @@ __github__ = 'https://github.com/diegompin'
 from acs_wrapper.src.read.acs_read_base import AcsRead
 
 
-class AcsReadTypeHealthInsuranceAge(AcsRead):
+class AcsReadAge(AcsRead):
 
     def __init__(self, datapath):
-        super().__init__(datapath=datapath, prefix='AGE', datafile='S0101', column_format='HD02_VD%02d',
-                         is_percent=True)
+        super().__init__(datapath=datapath, prefix='AGE', datafile='S0101', column_format='HC01_EST_VC%02d',
+                         is_percent=False)
 
     def get_mappings(self):
         """
